@@ -1,18 +1,46 @@
-body {
-  font-family: Arial;
-  background-color: #272727;
-  padding: 30px;
-  color: #ffffff;
+/* Variáveis */
+:root {
+  --font-family-base: Arial, sans-serif;
+  --color-background: #272727;
+  --color-text: #ffffff;
+  --color-app-background: #494949;
+  --color-input-background: #333;
+  --color-placeholder: #ddd;
+  --color-button-primary: #54cddd;
+  --color-button-primary-hover: #2e71c9;
+  --color-button-complete: #5cb85c;
+  --color-button-complete-hover: #297729;
+  --color-button-remove: #d9534f;
+  --color-button-remove-hover: #bb241f;
+  --border-radius-base: 15px;
+  --border-radius-small: 3px;
+  --padding-base: 30px;
+  --padding-app: 20px 30px;
+  --padding-input: 5px;
+  --padding-button: 5px 10px;
+  --margin-base: 10px 0;
+  --margin-app: 0 auto 300px;
+  --transition-duration: 0.3s;
 }
 
+/* Estilização global */
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-background);
+  padding: var(--padding-base);
+  color: var(--color-text);
+}
+
+/* Container da aplicação */
 .app {
   max-width: 600px;
-  margin: 0 auto 300px;
-  background-color: #494949;
-  padding: 20px 30px;
-  border-radius: 15px;
+  margin: var(--margin-app);
+  background-color: var(--color-app-background);
+  padding: var(--padding-app);
+  border-radius: var(--border-radius-base);
 }
 
+/* Títulos */
 h1 {
   text-align: center;
 }
@@ -21,75 +49,81 @@ h2 {
   margin-bottom: 10px;
 }
 
+/* Parágrafos */
 p {
-  margin: 10px 0;
+  margin: var(--margin-base);
 }
 
-input {
+/* Formulários */
+input,
+select {
   box-sizing: border-box;
+  padding: var(--padding-input);
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius-small);
+  width: 100%;
+  background-color: var(--color-input-background);
+  color: var(--color-text);
 }
 
+input::placeholder {
+  color: var(--color-placeholder);
+}
+
+/* Botões */
 button {
-  background-color: #54cddd;
-  color: #fff;
-  padding: 5px 10px;
+  background-color: var(--color-button-primary);
+  color: var(--color-text);
+  padding: var(--padding-button);
   border: none;
-  border-radius: 3px;
+  border-radius: var(--border-radius-small);
   cursor: pointer;
   opacity: 1;
-  transition: .3s;
+  transition: background-color var(--transition-duration);
 }
 
 button:hover {
-  background-color: #2e71c9;
-}
-
-.todo-form {
-  padding-bottom: 1.5rem;
-}
-
-input,select {
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  width: 100%;
+  background-color: var(--color-button-primary-hover);
 }
 
 .complete {
-  background-color: #5cb85c;
+  background-color: var(--color-button-complete);
 }
 
 .complete:hover {
-  background-color: #297729;
+  background-color: var(--color-button-complete-hover);
 }
 
 .remove {
-  background-color: #d9534f;
+  background-color: var(--color-button-remove);
 }
 
 .remove:hover {
-  background-color: #bb241f;
+  background-color: var(--color-button-remove-hover);
 }
 
+/* Lista de tarefas */
 .todo {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  margin: 10px 0;
-  background-color: #333;
-  border-radius: 3px;
+  margin: var(--margin-base);
+  background-color: var(--color-input-background);
+  border-radius: var(--border-radius-small);
 }
 
+/* Ações */
 .actions {
   display: flex;
   gap: 10px;
 }
 
+/* Filtros e busca */
 .filter,
 .search {
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #000;
   margin-bottom: 20px;
   padding-bottom: 20px;
 }
