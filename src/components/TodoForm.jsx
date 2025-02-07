@@ -1,40 +1,51 @@
-import { useState } from 'react'
-import { PropTypes } from "prop-types";
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-// Componente para criar uma nova tarefa
-const TodoForm = ( { addTodo }) => {
-    const [value, setValue] = useState('');
-    const [category, setCategory] = useState('');
+// Componente de formulário para adicionar novas tarefas
+const TodoForm = ({ addTodo }) => {
+    const [value, setValue] = useState("");
+    const [category, setCategory] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setValue('');
-        setCategory('');
+        if (!value.trim() || !category) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+        addTodo(value, category);
+        setValue("");
+        setCategory("");
     };
 
-  return (
-    <div>
-        <h2>Criar Tarefa</h2>
-        <form onSubmit={handleSubmit}>
-            <input type="text" 
-                placeholder='Digite um Título' 
-                value = {value}
-                onChange={(e) => setValue(e.target.value)}/>
-            <select onChange={(e) => setCategory(e.target.value)} value={category}>
-                <option value="">Selecione uma categoria</option>
-                <option value="Trabalho">Trabalho</option>
-                <option value="Estudos">Estudos</option>
-                <option value="Pessoal">Pessoal</option>
-            </select>
-            <button type="submit" onClick={() => addTodo(value, category)}>Criar Tarefa</button>
-        </form>
-    </div>
-  )
+    return (
+        <div>
+            <h2>Criar Tarefa</h2>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Título:
+                    <input type="text"
+                        placeholder="Digite um Título"
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}/>
+                </label>
+                <label>
+                    Categoria:
+                    <select value={category}
+                        onChange={(e) => setCategory(e.target.value)}>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="Trabalho">Trabalho</option>
+                        <option value="Estudos">Estudos</option>
+                        <option value="Pessoal">Pessoal</option>
+                    </select>
+                </label>
+                <button type="submit">Criar Tarefa</button>
+            </form>
+        </div>
+    );
 };
 
-// Definição das propriedades esperadas pelo componente
 TodoForm.propTypes = {
     addTodo: PropTypes.func.isRequired,
 };
 
-export default TodoForm
+export default TodoForm;
