@@ -1,5 +1,6 @@
 import { PropTypes } from "prop-types";
 
+// Componente para exibir uma tarefa
 const Todo = ({ todo, removeTodo, completeTodo }) => {
     return (
         <div key={todo.id} className="todo" style={{textDecoration: todo.isCompleted ? 'line-through' : ''}}>
@@ -15,6 +16,7 @@ const Todo = ({ todo, removeTodo, completeTodo }) => {
     );
 };
 
+// Definição das propriedades esperadas pelo componente
 Todo.propTypes = {
     todo: PropTypes.object.isRequired,
     removeTodo: PropTypes.func.isRequired,  

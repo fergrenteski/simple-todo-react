@@ -1,5 +1,6 @@
 import { PropTypes } from "prop-types";
 
+// Componente de filtro para tarefas
 const Filter = ({ filter, setFilter, setSort }) => {
     return (
         <div className="filter">
@@ -28,6 +29,7 @@ const Filter = ({ filter, setFilter, setSort }) => {
     );
 };
 
+// Definição das propriedades esperadas pelo componente
 Filter.propTypes = {
     filter: PropTypes.string.isRequired,
     setFilter: PropTypes.func.isRequired,

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { PropTypes } from "prop-types";
 
+// Componente para criar uma nova tarefa
 const TodoForm = ( { addTodo }) => {
     const [value, setValue] = useState('');
     const [category, setCategory] = useState('');
@@ -31,6 +32,7 @@ const TodoForm = ( { addTodo }) => {
   )
 };
 
+// Definição das propriedades esperadas pelo componente
 TodoForm.propTypes = {
     addTodo: PropTypes.func.isRequired,
 };

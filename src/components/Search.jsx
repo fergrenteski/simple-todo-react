@@ -1,5 +1,6 @@
 import { PropTypes } from "prop-types";
 
+// Componente para Pesquisar tarefas
 function Search({ search, setSearch }) {
   return (
     <div className="search">
@@ -13,6 +14,7 @@ function Search({ search, setSearch }) {
   )
 }
 
+// Definição das propriedades esperadas pelo componente
 Search.propTypes = {
     search: PropTypes.string.isRequired,
     setSearch: PropTypes.func.isRequired,
