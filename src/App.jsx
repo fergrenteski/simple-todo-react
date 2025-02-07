@@ -70,6 +70,9 @@ function App() {
     const [filter, setFilter] = useState("All");
     // Estado para a ordenação das tarefas
     const [sort, setSort] = useState("Asc");
+    // Estado para a categoria das tarefas
+    const [category, setCategory] = useState("All");
+    
 
     return (
         <div className="app">
@@ -77,7 +80,7 @@ function App() {
             {/* Componente de busca */}
             <Search search={search} setSearch={setSearch} />
             {/* Componente de filtro */}
-            <Filter filter={filter} setFilter={setFilter} setSort={setSort}/>
+            <Filter filter={filter} setFilter={setFilter} setSort={setSort} category={category} setCategory={setCategory}/>
             <div className="todo-list">
                 {todos
                     // Filtra as tarefas com base na busca
@@ -89,6 +92,12 @@ function App() {
                         if (filter === "All") return true;
                         if (filter === "Completed") return todo.isCompleted;
                         return !todo.isCompleted;
+                    })
+                    .filter((todo) => {
+                        if (category === "All") return true;
+                        if (category === "Estudos") return todo.category === "Estudos";
+                        if (category === "Pessoal") return todo.category === "Pessoal";
+                        if (category === "Trabalho") return todo.category === "Trabalho";
                     })
                     // Ordena as tarefas com base na ordem selecionada
                     .sort((a, b) => sort === "Asc" ? a.text.localeCompare(b.text) : b.text.localeCompare(a.text))
